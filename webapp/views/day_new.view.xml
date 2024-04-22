@@ -1,0 +1,131 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.commons.layout" xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f" controllerName="sap.support.boost.controller.day" displayBlock="true"
+	class="sapUiSizeCompact">
+	<ScrollContainer width="100%" height="100%" vertical="true" focusable="true" horizontal="true">
+		<Panel>
+			<l:Grid content="{StaffModel>/metaTeams}" class="sapUiSmallMarginTop custContentMargin" hSpacing="1" defaultSpan="L6 M6 S12">
+				<l:content>
+					<VBox width="100%">
+						<CustomListItem class="headerTeamsCell">
+							<Toolbar>
+								<Text text="{StaffModel>name}" class="headerTeamsCellLabel"/>
+								<ToolbarSpacer/>
+								<core:Icon src="sap-icon://email" press="onPressMail" class="headerTeamCellMail"/>
+							</Toolbar>
+						</CustomListItem>
+						<List items="{StaffModel>teams}">
+							<CustomListItem>
+								<List visible="{StaffModel>showList}" showNoData="false" items="{StaffModel>members}">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{StaffModel>name}{StaffModel>publicHolidayShort}" level="H2"/>
+											<ToolbarSpacer/>
+											<core:Icon src="sap-icon://email" press="onPressMail"/>
+										</Toolbar>
+									</headerToolbar>
+									<items>
+										<CustomListItem class="staffListItem" type="Active" press="handleStaffPress">
+											<VBox>
+												<items>
+													<Label text="{StaffModel>role}"></Label>
+													<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+														<items>
+															<Text text="{StaffModel>firstName} {StaffModel>lastName}"/>
+															<Text text="{StaffModel>total}" visible="{UrlPara>/workload}"/>
+														</items>
+													</FlexBox>
+												</items>
+											</VBox>
+										</CustomListItem>
+									</items>
+								</List>
+							</CustomListItem>
+						</List>
+					</VBox>
+				</l:content>
+			</l:Grid>
+			<!--<l:Grid content="{StaffModel>/results}" hSpacing="1" defaultSpan="L6 M6 S12">-->
+			<!--	<l:content>-->
+			<!--		<List visible="{StaffModel>showList}" showNoData="false" items="{StaffModel>members}">-->
+			<!--			<headerToolbar>-->
+			<!--				<Toolbar>-->
+			<!--					<Title text="{StaffModel>name}{StaffModel>publicHolidayShort}" level="H2"/>-->
+			<!--					<ToolbarSpacer/>-->
+			<!--					<core:Icon src="sap-icon://email" press="onPressMail"/>-->
+			<!--				</Toolbar>-->
+			<!--			</headerToolbar>-->
+			<!--			<items>-->
+			<!--				<CustomListItem class="staffListItem" type="Active" press="handleStaffPress">-->
+			<!--					<VBox>-->
+			<!--						<items>-->
+			<!--							<Label text="{StaffModel>role}"></Label>-->
+			<!--							<FlexBox alignItems="Start" justifyContent="SpaceBetween">-->
+			<!--								<items>-->
+			<!--									<Text text="{StaffModel>firstName} {StaffModel>lastName}"/>-->
+			<!--									<Text text="{StaffModel>total}" visible="{UrlPara>/workload}"/>-->
+			<!--								</items>-->
+			<!--							</FlexBox>-->
+			<!--						</items>-->
+			<!--					</VBox>-->
+			<!--				</CustomListItem>-->
+			<!--			</items>-->
+			<!--		</List>-->
+			<!--	</l:content>-->
+			<!--</l:Grid>-->
+			<!--<layout:MatrixLayout id="Boost.view.day.Layout.H" rows="{ path : 'StaffHeaderModel>/rows', templateShareable:false }">-->
+			<!--	<layout:rows>-->
+			<!--		<layout:MatrixLayoutRow cells="{StaffHeaderModel>cells}" class="listMatrixRow">-->
+			<!--			<layout:cells >-->
+			<!--				<layout:MatrixLayoutCell class="listMatrixCell">-->
+			<!--					<CustomListItem class="headerTeamsCell" id="cc">-->
+			<!--						<Toolbar>-->
+			<!--							<Text text="{StaffHeaderModel>name}" class="headerTeamsCellLabel"/>-->
+			<!--							<ToolbarSpacer/>-->
+			<!--							<core:Icon src="sap-icon://email" press="onPressMail" class="headerTeamCellMail"/>-->
+			<!--						</Toolbar>-->
+			<!--					</CustomListItem>-->
+			<!--				</layout:MatrixLayoutCell>-->
+			<!--			</layout:cells>-->
+			<!--		</layout:MatrixLayoutRow>-->
+			<!--	</layout:rows>-->
+			<!--</layout:MatrixLayout>-->
+			<!--<layout:MatrixLayout id="Boost.view.day.Layout" rows="{ path : 'StaffModel>/rows', templateShareable:false }">-->
+			<!--	<layout:rows>-->
+			<!--		<layout:MatrixLayoutRow cells="{StaffModel>cells}" class="listMatrixRow">-->
+			<!--			<layout:cells >-->
+			<!--				<layout:MatrixLayoutCell class="listMatrixCell">-->
+			<!--					<List visible="{StaffModel>showList}" showNoData="false" items="{StaffModel>members}">-->
+			<!--						<headerToolbar>-->
+			<!--							<Toolbar>-->
+			<!--								<Title text="{StaffModel>name}{StaffModel>publicHolidayShort}" level="H2"/>-->
+			<!--								<ToolbarSpacer/>-->
+			<!--								<core:Icon src="sap-icon://email" press="onPressMail"/>-->
+			<!--							</Toolbar>-->
+			<!--						</headerToolbar>-->
+			<!--						<items>-->
+			<!--							<CustomListItem class="staffListItem" type="Active" press="handleStaffPress">-->
+			<!--								<VBox>-->
+			<!--									<items>-->
+			<!--										<Label text="{StaffModel>role}"></Label>-->
+			<!--										<FlexBox alignItems="Start" justifyContent="SpaceBetween">-->
+			<!--											<items>-->
+			<!--												<Text text="{StaffModel>firstName} {StaffModel>lastName}"/>-->
+			<!--												<Text text="{StaffModel>total}" visible="{UrlPara>/workload}"/>-->
+			<!--											</items>-->
+			<!--										</FlexBox>-->
+			<!--									</items>-->
+			<!--								</VBox>-->
+			<!--							</CustomListItem>-->
+			<!--						</items>-->
+			<!--					</List>-->
+			<!--				</layout:MatrixLayoutCell>-->
+			<!--			</layout:cells>-->
+			<!--		</layout:MatrixLayoutRow>-->
+			<!--	</layout:rows>-->
+			<!--</layout:MatrixLayout>-->
+		</Panel>
+		<!--<VBox>
+			<FormattedText htmlText="{dayViewBottonModel>/HTML}"/>
+		</VBox>-->
+	</ScrollContainer>
+</mvc:View>

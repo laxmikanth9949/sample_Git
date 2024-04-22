@@ -1,0 +1,52 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.commons.layout"
+	xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f" controllerName="sap.support.boost.controller.dtmngr" displayBlock="true"
+	class="sapUiSizeCompact">
+	<Panel>
+		<VBox>
+			<layout:MatrixLayout id="Boost.view.dtmngr.Layout.H1" rows="{ path : 'StaffDTMNHeaderModel>/members', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffDTMNHeaderModel>members}">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="monthCalCell">
+								<CustomListItem class="headerTeamsCell" visible="{StaffDTMNHeaderModel>isSelected}">
+									<Text text="{StaffDTMNHeaderModel>dayDate}" class="headerTeamsCellLabel"/>
+								</CustomListItem>
+								<CustomListItem class="headerTeamsCell2" visible="{StaffDTMNHeaderModel>isSelected}">
+									<Text text="{StaffDTMNHeaderModel>date}" class="headerTeamsCellLabel"/>
+								</CustomListItem>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+			<layout:MatrixLayout id="Boost.view.dtmngr.Layout" rows="{ path : 'StaffDTMNStaffModel2>/members', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffDTMNStaffModel2>members}">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="monthCalCell">
+								<Label text="{StaffDTMNStaffModel2>serviceError}" visible="{StaffDTMNStaffModel2>isStaffing}" class="labelNoStaffing"></Label>
+								<List showNoData="false" visible="{StaffDTMNStaffModel2>isStaffing}" items="{StaffDTMNStaffModel2>members}">
+									<CustomListItem class="staffListItem" type="Active">
+										<Text text="{StaffDTMNStaffModel2>firstName} {StaffDTMNStaffModel2>lastName}"/>
+									</CustomListItem>
+								</List>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+			<VBox justifyContent="Center">
+				<HBox justifyContent="Center">
+					<core:HTML
+						content="&lt;div style=&quot;font-family:Arial,Helvetica,sans-serif; font-size: 0.775rem; text-align:center; margin-right: 10px;&quot;&gt;Weekday hours &lt;br&gt; APJ : 01:00 - 09:00 CET &lt;br&gt; EMEA : 09:00 - 17:00 CET &lt;br&gt; US : 17:00 - 01:00 CET&lt;/div&gt;"/>
+					<core:HTML
+						content="&lt;div style=&quot;font-family:Arial,Helvetica,sans-serif; font-size: 0.775rem; text-align:center&quot;&gt;Weekend hours &lt;br&gt; APJ : 01:00 - 09:00 CET &lt;br&gt; EMEA : 09:00 - 17:00 CET &lt;br&gt; US : 17:00 - 01:00 CET&lt;/div&gt;"/>
+				</HBox>
+				<HBox justifyContent="Center" class="margins">
+					<core:HTML
+						content="&lt;div style=&quot;font-family:Arial,Helvetica,sans-serif; font-size: 0.775rem; text-align:center&quot;&gt;&lt;a href=&quot;https://documents.wdf.sap.corp/share/page/site/MCS/document-details?nodeRef=workspace://SpacesStore/0a4a7617-e852-46eb-9cc1-afc6ad0c2992&quot; target=&quot;_blank&quot;&gt;Weekend duty manager process documentation &lt;/a&gt;&lt;/div&gt;"/>
+				</HBox>
+			</VBox>
+		</VBox>
+	</Panel>
+</mvc:View>
