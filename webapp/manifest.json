@@ -1,0 +1,247 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "sap.support.boost",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZS_BACKOFFICE_STAFFING_SRV",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"resourceReq": {
+				"uri": "/sap/opu/odata/sap/ZS_RPA_GATEWAY_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			},
+			"staffModel": {
+				"uri": "/sap/fiori/zstaffingnew/sap/opu/odata/sap/ZSTAFFING_APP_2_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "sap.support.boost.view.App",
+			"type": "XML",
+			"id": "App"
+		},
+		"config": {
+			"fullWidth": true,
+			"sapFiori2Adaptation": true,
+			"reportingId": "c1b38672-46e5-47ba-ba3b-f27ac18d1f7c",
+			"reportingHosts": [
+				"fiorilaunchpad-sapitcloud.dispatcher.hana.ondemand.com",
+				"fiorilaunchpad.sap.com"
+			]
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"default": {
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					},
+					"defaultBindingMode": "TwoWay",
+					"useBatch": false
+				},
+				"preload": true
+			},
+			"default1": {
+				"type": "sap.ui.model.odata.ODataModel",
+				"dataSource": "mainService",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					},
+					"defaultBindingMode": "TwoWay",
+					"useBatch": false
+				},
+				"preload": true
+			},
+			"resReq": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "resourceReq",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultUpdateMethod": "PUT",
+					"useBatch": false
+				},
+				"preload": true
+			},
+			"staffModel1": {
+				"dataSource": "staffModel",
+				"settings": {
+					"metadataUrlParams": {
+						"sap-documentation": "heading"
+					},
+					"defaultBindingMode": "TwoWay",
+					"useBatch": false
+				},
+				"preload": true
+			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "sap.support.boost.i18n.i18n"
+				}
+			},
+			"datePick": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Regions": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Teams": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true,
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"Staffed": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Staffing": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Config": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"selectedKey": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Incidents": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Info": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"UrlPara": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			},
+			"Auth": {
+				"type": "sap.ui.model.json.JSONModel",
+				"preload": true
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "sap.support.boost.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "day",
+					"target": "day"
+				},
+				{
+					"pattern": "month",
+					"name": "month",
+					"target": "month"
+				},
+				{
+					"pattern": "dtmngr",
+					"name": "dtmngr",
+					"target": "dtmngr"
+				},
+				{
+					"pattern": "admin",
+					"name": "admin",
+					"target": "admin"
+				}
+			],
+			"targets": {
+				"day": {
+					"viewId": "day",
+					"viewName": "day"
+				},
+				"month": {
+					"viewId": "month",
+					"viewName": "month"
+				},
+				"dtmngr": {
+					"viewId": "dtmngr",
+					"viewName": "dtmngr"
+				},
+				"admin": {
+					"viewType": "XML",
+					"viewName": "admin"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}
