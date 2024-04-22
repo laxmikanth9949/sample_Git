@@ -1,0 +1,45 @@
+<mvc:View controllerName="sap.support.boost.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" displayBlock="true"
+	xmlns="sap.m">
+	<Page id="page" class="sapUiSizeCompact">
+		<customHeader>
+			<Toolbar>
+				<Button icon="sap-icon://media-reverse" tooltip="{i18n>backdate}" press="calPrev"/>
+				<Button icon="sap-icon://media-play" tooltip="{i18n>nextdate}" press="calNext"/>
+				<DatePicker id="DP1" width="15%" tooltip="{i18n>date}" value="{path: 'datePick>/date', type: 'sap.ui.model.type.Date'}" change="handleDatePickerChange"
+					displayFormat="long" valueFormat="yyyy-MM-dd"/>
+				<ComboBox id="combo_Region" tooltip="{i18n>region}" items="{path: 'Regions>/'}" enabled="{Config>/region}" selectedKey="{selectedKey>/region}"
+					change="handleRegionChange">
+					<core:Item key="{Regions>Region}" text="{Regions>Region}"/>
+				</ComboBox>
+				<ComboBox id="combo_Team" tooltip="{i18n>team}" items="{path: 'Teams>/'}" enabled="{Config>/team}" selectedKey="{selectedKey>/team}" change="handleTeamChange">
+					<core:Item key="{Teams>Team_Id}" text="{Teams>Team_Id}"/>
+				</ComboBox>
+				
+				<ToolbarSpacer/>
+				<!--<Button text="Day" press="onDay"/>-->
+				<!--<Button text="Month" press="onMonth"/>-->
+				<!--<Button text="Duty Manager" press="onDutyManager"/>-->
+				
+				<SegmentedButton selectedKey="{selectedKey>/page}">
+					<items>
+						<SegmentedButtonItem text="Day" key="day" press="onDay" tooltip="{i18n>day}" />
+						<SegmentedButtonItem text="Month" key="month" press="onMonth" tooltip="{i18n>month}" />
+						<SegmentedButtonItem text="Duty Manager" key="dutyManager" press="onDutyManager" tooltip="{i18n>dutymanager}" />
+						<SegmentedButtonItem text="Admin" key="admin" press="onAdmin" tooltip="{i18n>admin}" />
+					</items>
+				</SegmentedButton>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://message-information" type="Emphasized" tooltip="{i18n>help}" width="30px" press="onMessageInformationDialogPress"/>
+				<Button icon="sap-icon://down" tooltip="{i18n>downtime}" type="Emphasized" width="30px" press="onSystemDowntime"/>
+				<Button icon="sap-icon://action" tooltip="{i18n>StaffingCheck}" type="Emphasized" width="30px" press="onStaffingCheck" visible="false" />
+			</Toolbar>
+		</customHeader>
+		<content>
+			<App id="app">
+				<pages>
+					<Page></Page>
+				</pages>
+			</App>
+		</content>
+	</Page>
+</mvc:View>

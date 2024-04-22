@@ -1,0 +1,14 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Incidents">
+		<List items="{ path: 'Incide>/' }">
+				<DisplayListItem label="{Incide>incId}" type="Active" press="handleIncPress">
+					<customData>
+						<core:CustomData value="{Incide>fullIncId}"/>
+					</customData>
+				</DisplayListItem>
+		</List>
+		<endButton>
+			<Button text="Close" press="hanldIncDialogClose"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
