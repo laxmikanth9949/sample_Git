@@ -1,0 +1,30 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" controllerName="sap.support.boost.controller.mainPage"
+	displayBlock="true" class="sapUiSizeCompact">
+	<Page id="page" class="sapUiContentPadding">
+		<!--<customHeader>
+			<Toolbar>
+				<Button icon="sap-icon://media-reverse" press="calPrev"/>
+				<Button icon="sap-icon://media-play" press="calNext"/>
+				<DatePicker id="DP1" width="15%" value="{path: 'datePick>/date', type: 'sap.ui.model.type.Date'}" change="handleDatePickerChange"
+					displayFormat="long" valueFormat="yyyy-MM-dd"/>
+				<ComboBox id="combo_Region" items="{path: 'Regions>/'}" enabled="{Config>/region}" selectedKey="{selectedKey>/region}"
+					change="handleRegionChange">
+					<core:Item key="{Regions>Region}" text="{Regions>Region}"/>
+				</ComboBox>
+				<ComboBox id="combo_Team" items="{path: 'Teams>/'}" enabled="{Config>/team}" selectedKey="{selectedKey>/team}">
+					<core:Item key="{Teams>Team_Id}" text="{Teams>Team_Id}"/>
+				</ComboBox>
+				<ToolbarSpacer/>
+				<Button text="Day" press="onDay"/>
+				<Button text="Month" press="onMonth"/>
+				<Button text="Duty Manager" press="onDutyManager"/>
+				<ToolbarSpacer/>
+				<Button icon="sap-icon://message-information" width="30px" press="onMessageInformationDialogPress" class="sapUiSmallMarginBottom"/>
+			</Toolbar>
+		</customHeader>-->
+		<!--<content>
+			<mvc:XMLView id="day" viewName="sap.support.boost.view.day"/>
+			<mvc:XMLView id="month" viewName="sap.support.boost.view.month"/>
+		</content>-->
+	</Page>
+</mvc:View>

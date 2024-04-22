@@ -1,0 +1,59 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="sap.support.boost.controller.admin"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:EmpSingleSelect="sap.coe.capacity.reuselib.controls.EmployeeSingleSelect"> 
+		<ScrollContainer  height="80%" vertical="true" focusable="true" horizontal="true">
+		<Panel>
+			<!--<CustomListItem class="headerTeamsCell" id="cc">-->
+			<!--	<Toolbar>-->
+			<!--		<Text text="StaffHeaderModel>name" class="headerTeamsCellLabel"/>-->
+			<!--		<ToolbarSpacer/>-->
+			<!--		<core:Icon src="sap-icon://email" press="onPressHeadMail" class="headerTeamCellMail"/>-->
+			<!--	</Toolbar>-->
+			<!--</CustomListItem>-->
+			<List items="{StaffModel>/StaffItems}" id="idStaffdata" >
+				<headerToolbar>
+					<Toolbar>
+						<Title id="headerTitle" level="H2"/>
+						<ToolbarSpacer/>
+						<core:Icon src="sap-icon://email" press="onPressMail"/>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<CustomListItem class="staffListItem" >
+						<VBox> 
+							<Label text="{StaffModel>role}" width="60%" wrapping="true"></Label>
+							<Text text="{StaffModel>text}" wrapping="true"/>
+						</VBox>
+						<HBox justifyContent="Center" alignItems="Center" visible="true" alignContent="Stretch">
+							<Button  icon="sap-icon://value-help" width="5%" press="onHelpButtonClick"></Button>
+							<ComboBox placeholder="Select User ID" id="idSelectUser" required="true" visible="true" items="{StaffModel>suggestEmp}"
+								change="handleUserDropdown" width="80%" >
+								<core:Item key="{StaffModel>ResGuid}" text="{StaffModel>EmpId} - {StaffModel>FullName}"/>
+							</ComboBox>
+							<ComboBox placeholder="Select Task Type" id="idtasktypeEdit" editable="{StaffModel>IoEditable}" required="true" value="{StaffModel>task}" visible="true" items="{taskTypeModel>/items}"
+								change="handleTasktypeDropdown" width="80%">
+								<core:Item key="{taskTypeModel>TaskType}" text="{taskTypeModel>TaskType}"/>
+							</ComboBox>
+							<ComboBox placeholder="Select Fraction" id="idfractionadmin" editable="{StaffModel>IoEditable}" required="true" value="{StaffModel>fraction}" visible="true" items="{FractionModel>/items}"
+							change="handleFractionDropdown" width="60%">
+								<core:Item key="{FractionModel>StaffFraction}" text="{FractionModel>StaffFraction}"/>
+							</ComboBox>
+							<DatePicker id="idadminstartdate" placeholder="Start Date" tooltip="{path:'StaffModel>startDay',formatter:'.formatter.fnParseDateCompare'}" value="{StaffModel>startDay}" editable="false" width="90%"></DatePicker>
+							<DatePicker id="idadminenddate" placeholder="End Date" tooltip="{path:'StaffModel>endDay',formatter:'.formatter.fnParseDateCompare'}" value="{StaffModel>endDay}" editable="false" width="90%"></DatePicker>
+							<Label text="{StaffModel>itemID}" ></Label>
+							<!--<Button text="Save" icon="sap-icon://save" press="onSaveRow" visible="false"/>-->
+							<!--<Button text="Edit" icon="sap-icon://edit" press="onEditRow" visible="true"/>-->
+						</HBox>
+					</CustomListItem>
+				</items>
+			</List>
+		</Panel>
+		<!--<Toolbar>
+			<ToolbarSpacer/>
+			<Button text="Submit" press="onSaveButton"/>
+		</Toolbar>-->
+	</ScrollContainer>
+		<OverflowToolbar>
+			<ToolbarSpacer/>
+			<Button text="Submit" id="idOnSubmitAssignment" width="15%" type="Emphasized" press="onSaveButton"/>
+		</OverflowToolbar>
+</mvc:View>

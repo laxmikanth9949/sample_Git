@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f">
+	<ResponsivePopover showHeader="false" placement="Auto" showCloseButton="true" horizontalScrolling="true" verticalScrolling="true" showArrow="true">
+		<content>
+			<VBox>
+				<f:Avatar class="sapUiSmallMarginBeginEnd sapUiSmallMarginTop" src="https://avatars.wdf.sap.corp/avatar/{employeeId}?s=94" displaySize="XL"
+					displayShape="Square"></f:Avatar>
+				<List>
+					<items>
+						<!--<StandardListItem icon="https://avatars.wdf.sap.corp/avatar/{employeeId}?s=94"/>-->
+						<!--<CustomListItem>-->
+						<!--	<content>-->
+						<!--		<Image src="https://avatars.wdf.sap.corp/avatar/{employeeId}?s=94"/>-->
+						<!--	</content>-->
+						<!--</CustomListItem>-->
+						<DisplayListItem label="{i18n>userId}" value="{employeeId}"/>
+						<DisplayListItem label="{i18n>mail}" value="{mailto}" type="Active" press="handlePressMailItem"/>
+						<DisplayListItem label="{i18n>phone}" value="{tel}" type="Active" press="handlePressTelItem"/>
+						<DisplayListItem label="{i18n>Mobile}" value="{mobile}" type="Active" press="handlePressMobItem"/>
+						<DisplayListItem label="{i18n>StaffManager}" value="{StaffMngrName}"/>
+						<DisplayListItem label="{i18n>info}" value="{serviceOrder} Item: {serviceItem}"/>
+						<DisplayListItem label="{i18n>Location}" value="{deskLocation}"/>
+						<DisplayListItem label="{i18n>Note}" value="{note}"/>
+						<DisplayListItem label="{i18n>actCount}" value="{acts}" visible="{UrlPara>/workload}"/>
+						<DisplayListItem label="{i18n>actId}" value="{actNum}" visible="{UrlPara>/workload}"/>
+						<DisplayListItem label="{i18n>incCount}" value="{incs}" visible="{UrlPara>/workload}"/>
+						<DisplayListItem label="{i18n>incId}" type="Navigation" visible="{UrlPara>/workload}" press="handleIncPopup">
+							<customData>
+								<core:CustomData key="id" value="{incNum}"/>
+							</customData>
+						</DisplayListItem>
+						<DisplayListItem label="{i18n>customerEscalationCount}" value="{custEscCount}" visible="{UrlPara>/workload}"/>
+						<DisplayListItem label="{i18n>customerEscalationIDs}" value="{custEscIDs}" visible="{UrlPara>/workload}"/>
+						<DisplayListItem label="{i18n>escSysId}" type="Navigation" visible="{UrlPara>/workload}" press="handleEscPopup">
+							<customData>
+								<core:CustomData key="id" value="{custEscSys_id}"/>
+							</customData>
+						</DisplayListItem>
+					</items>
+				</List>
+				
+				<Bar design="Footer">
+					<contentMiddle>
+						<Button icon="sap-icon://email" press="handlePressMailIcon"/>
+						<Button icon="sap-icon://phone" press="handlePressTelIcon"/>
+						<Button icon="sap-icon://iphone" press="handlePressMobIcon"/>
+						<Button text="{i18n>Assignment}" icon="sap-icon://person-placeholder" press="handlePressAssign" visible="{Auth>/authorization}"/>
+					</contentMiddle>
+				</Bar>
+			</VBox>
+		</content>
+	</ResponsivePopover>
+</core:FragmentDefinition>

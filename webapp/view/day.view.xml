@@ -1,0 +1,94 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.commons.layout" xmlns:l="sap.ui.layout"
+	xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f" controllerName="sap.support.boost.controller.day" displayBlock="true"
+	class="sapUiSizeCompact">
+	<ScrollContainer width="100%" height="90%" vertical="true" focusable="true" horizontal="true">
+		<Panel>
+			<!--<content>
+				<f:GridList id="staffHeader" items="{ path: 'StaffModel>/rows/0/cells' }">
+					<f:GridListItem>
+						<VBox class="demoBox" height="100%">
+							<Title text="{StaffModel>name}" wrapping="true"/>
+						</VBox>
+					</f:GridListItem>
+				</f:GridList>
+				<VBox>
+					<f:GridList id="staffContent" items="{ path: 'StaffContentModel>/rows/0/cells' }">
+						<f:GridListItem>
+							<VBox class="demoBox" height="100%">
+								<List headerText="{StaffContentModel>name}" items="{ path: 'StaffContentModel>members' }" class="demoBox">
+									<CustomListItem class="demoBox">
+											<VBox class="demoBox">
+												<Text text="{StaffContentModel>firstName}"/>
+											</VBox>
+									</CustomListItem>
+								</List>
+							</VBox>
+						</f:GridListItem>
+					</f:GridList>
+				</VBox>
+			</content>-->
+			<layout:MatrixLayout id="Boost.view.day.Layout.H" rows="{ path : 'StaffHeaderModel>/rows', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffHeaderModel>cells}" class="listMatrixRow">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="listMatrixCell">
+								<CustomListItem class="headerTeamsCell" id="cc">
+									<Toolbar>
+										<Text text="{StaffHeaderModel>name}" class="headerTeamsCellLabel"/>
+										<ToolbarSpacer/>
+										<core:Icon src="sap-icon://email" press="onPressHeadMail" class="headerTeamCellMail"/>
+									</Toolbar>
+								</CustomListItem>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+			<layout:MatrixLayout id="Boost.view.day.Layout" rows="{ path : 'StaffModel>/rows', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffModel>cells}" class="listMatrixRow">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="listMatrixCell">
+								<List visible="{StaffModel>showList}" showNoData="false" items="{path:'StaffModel>members',sorter:{path:'StaffModel>FlexPosNo',descending:false}}">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="{StaffModel>name}{StaffModel>publicHolidayShort}" level="H2"/>
+											<ToolbarSpacer/>
+											<core:Icon src="sap-icon://email" press="onPressMail"/>
+										</Toolbar>
+									</headerToolbar>
+									<items>
+										<CustomListItem class="staffListItem" type="Active" press="handleStaffPress">
+											<VBox>
+												<items>
+													<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+														<items>
+													<Label text="{StaffModel>role} {StaffModel>UsageType}" design="Bold" wrapping="true" tooltip="{StaffModel>role} {StaffModel>UsageType}" ></Label>
+													<ObjectStatus text="" state="{StaffModel>Staff_Check}" icon="{path:'StaffModel>Staff_Check',formatter:'.formatter.statusIndicators'}" visible="{Auth>/authorization}" />
+													<Label text="{StaffModel>SendingUnit}" design="Bold" />
+														</items>
+													</FlexBox>
+													<FlexBox alignItems="Start" justifyContent="SpaceBetween">
+														<items>
+															<Text text="{StaffModel>firstName} {StaffModel>lastName}" tooltip="{StaffModel>firstName} {StaffModel>lastName}" />
+															<Text text="{StaffModel>total}" visible="{UrlPara>/workload}"/>
+														</items>
+													</FlexBox>
+												</items>
+											</VBox>
+										</CustomListItem>
+									</items>
+								</List>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+		</Panel>
+		<Panel>
+			<VBox alignItems="Center">
+				<FormattedText htmlText="{/HTML}"/>
+			</VBox>
+		</Panel>
+	</ScrollContainer>
+</mvc:View>

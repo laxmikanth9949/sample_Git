@@ -1,0 +1,54 @@
+<mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.commons.layout"
+	xmlns:grid="sap.ui.layout.cssgrid" xmlns:f="sap.f" controllerName="sap.support.boost.controller.month" displayBlock="true"
+	class="sapUiSizeCompact">
+	<ScrollContainer width="100%" height="100%" vertical="true" focusable="true" horizontal="true">
+		<Panel>
+			<layout:MatrixLayout id="Boost.view.month.Layout.H" rows="{ path : 'StaffMonthHeaderModel>/members', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffMonthHeaderModel>members}" class="listMatrixRow">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="listMatrixCell">
+								<CustomListItem class="headerTeamsCell">
+									<Toolbar>
+										<Text text="{StaffMonthHeaderModel>date}" class="headerTeamsCellLabel"/>
+									</Toolbar>
+								</CustomListItem>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+			<layout:MatrixLayout id="Boost.view.month.Layout" rows="{ path : 'StaffMonthModel>/members', templateShareable:false }">
+				<layout:rows>
+					<layout:MatrixLayoutRow cells="{StaffMonthModel>members}" class="listMatrixRow">
+						<layout:cells >
+							<layout:MatrixLayoutCell class="monthCalCell">
+								<VBox>
+									<Label text="{StaffMonthModel>dayDate}" class="monthCalCellDate"/>
+									<Label visible="{StaffMonthModel>isPHoliday}" text="{StaffMonthModel>publicHolidayLong}" tooltip="{StaffMonthModel>publicHolidayLong}"
+										class="monthCalCellPH"/>
+									<Label visible="{StaffMonthModel>isStaffing}" text="{StaffMonthModel>serviceError}" class="labelNoStaffing"/>
+								</VBox>
+								<List visible="{StaffMonthModel>isStaffing}" showNoData="false" items="{StaffMonthModel>members}">
+									<items>
+										<CustomListItem class="staffListItem" type="Active" press="handleStaffPress">
+											<VBox>
+												<items>
+													<Label text="{StaffMonthModel>role}" class="wrapRole"></Label>
+													<Text text="{StaffMonthModel>firstName} {StaffMonthModel>lastName}"/>
+												</items>
+											</VBox>
+										</CustomListItem>
+									</items>
+								</List>
+							</layout:MatrixLayoutCell>
+						</layout:cells>
+					</layout:MatrixLayoutRow>
+				</layout:rows>
+			</layout:MatrixLayout>
+		</Panel>
+		<!--<VBox>
+			<FormattedText htmlText="{dayViewBottonModel>/HTML}"/>
+		</VBox>-->
+	</ScrollContainer>
+</mvc:View>
